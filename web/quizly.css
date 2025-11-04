@@ -156,6 +156,7 @@ header {
     height: 100px;
     border-radius: 25px;
     border: none;
+    box-shadow: 0px 6px 0px #00000070;
 }
 
 .btn_answer:hover {
@@ -181,4 +182,8 @@ header {
 
 .blue {
     background-color: #1E88E5;
+}
+
+.morepadding {
+    padding-top: 10%;
 }
