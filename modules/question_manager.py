@@ -25,7 +25,7 @@ class QuestionManager:
         if self.category:
             self.params["category"] = self.category
         if self.type:
-            self.params["type"] = self.qtype
+            self.params["type"] = self.type
         
     def get_question(self):
         API_URL = "https://opentdb.com/api.php"

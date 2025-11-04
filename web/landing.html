@@ -3,7 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="./landing.css">
+        <link rel="stylesheet" type="text/css" href="./quizly.css">
+        <script src="./landing.js" defer></script>
         <title>Quizly</title>
     </head>
     <body>
@@ -11,7 +12,7 @@
             <img src="./files/logo.png" alt="Quizly Logo" width="100px" height="100px"/>
             <h1>The open source quiz game</h1>
         </header>
-        <main>
+        <main class="divide">
             <div class="bubble large">
                 <div class="separator">
                     <div id="avatar_picture">
@@ -19,16 +20,20 @@
                     </div>
                     <div id="textandbox">
                         <b class="text_medium">Choose your Avatar and Name</b>
-                        <input type="text" class="name_select" maxlength="16" placeholder="Username">
+                        <input type="text" class="name_select" maxlength="16" placeholder="Username" id="username_id">
                     </div>
                 </div>
                 <div class="center">
-                    <button>PLAY</button>
+                    <button class="btn_feedback" id="play_button">PLAY</button>
                 </div>
             </div>
             <div class="bubble medium">
+                <div>
+                    <h1 class="center">Leaderboard</h1>
+                </div>
             </div>
-            <div class="bubble medium">
+            <div class="bubble medium center">
+                <img src="./files/tutorial.png" alt="Tutorial PNG" width="85%">
             </div>
         </main>
     </body>
