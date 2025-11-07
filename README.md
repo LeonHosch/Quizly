@@ -10,7 +10,6 @@
 * [Features](#features)
 * [Installation & Start](#installation--start)
 * [Project Structure](#project-structure)
-* [Configuration](#configuration)
 * [Deployment](#deployment)
 * [License](#license)
 * [Acknowledgements](#acknowledgements)
