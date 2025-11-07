@@ -77,28 +77,6 @@ Quizly/
 
 ---
 
-## ⚙️ Configuration
-
-You can optionally create a `.env` file in the root directory to customize behavior, such as category, difficulty, or debug mode.
-
-### Example (`.env.example`)
-
-```
-QUIZLY_DEBUG=false
-OPENTRIVIA_BASE_URL=https://opentdb.com
-DEFAULT_CATEGORY=9
-DEFAULT_DIFFICULTY=medium
-QUESTION_AMOUNT=10
-```
-
-To use it:
-
-```bash
-cp .env.example .env
-```
-
----
-
 ## 🖥️ Deployment
 
 Since **Quizly** is fully local, there’s no deployment process.
