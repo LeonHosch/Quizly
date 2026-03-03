@@ -84,7 +84,7 @@ function renderState(
     `;
     allButtons.innerHTML = `
       <div class="center" style="margin-top:16px">
-        <button class="btn_answer green" onclick="window.location.href='landing.html'">Continue</button>
+        <button class="btn_answer green" onclick="window.location.href='/landing.html'">Continue</button>
       </div>
     `;
     return;

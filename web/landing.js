@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   playButton.addEventListener("click", () => {
     username = usernameInput.value.trim();
-    const lobbyCode = "1234"; // later you can make this dynamic
+    const lobbyCode = "1234";
 
     if (!username) {
         usernameInput.value = "RandomName"
@@ -16,6 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
         lobby: lobbyCode
     });
 
-    window.location.href = `ingame.html?${params.toString()}`;
+    window.location.href = `/ingame.html?${params.toString()}`;
     });
 });

@@ -1,0 +1,18 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: quizly-backend
+    ports:
+      - "8000:8000"
+
+  web:
+    build:
+      context: ./web
+    container_name: quizly-web
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+      

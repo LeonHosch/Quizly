@@ -97,7 +97,7 @@ class Singleplayer:
 
     def wrong_and_advance(self) -> bool:
         self._advance_to_next_question()
-        return False  # last_correct
+        return False
 
     def check_answer(self) -> bool:
         if self.user_input is None:
@@ -138,18 +138,18 @@ app = FastAPI(title="Quizly Simple")
 BASE_DIR = Path(__file__).resolve().parent
 WEB_DIR = BASE_DIR.parent / "web"
 
-app.mount("/web", StaticFiles(directory=WEB_DIR), name="web")
+#app.mount("/web", StaticFiles(directory=WEB_DIR), name="web")
 
 @app.get("/")
 def serve_landing():
     return FileResponse(WEB_DIR / "landing.html")
 
 
-game: Optional[Singleplayer] = None  # single instance
+game: Optional[Singleplayer] = None
 
 
 class AnswerIn(BaseModel):
-    choice: int  # -1 used for timeout
+    choice: int
 
 
 @app.post("/api/start")
