@@ -8,13 +8,13 @@
 
 ## 📖 Table of Contents
 
--   [Overview](#overview)
--   [Features](#features)
--   [Installation & Start](#installation--start)
--   [Project Structure](#project-structure)
--   [Deployment](#deployment)
--   [License](#license)
--   [Acknowledgements](#acknowledgements)
+-   [Overview](#-overview)
+-   [Features](#-features)
+-   [Installation & Start](#-installation--start)
+-   [Project Structure](#-project-structure)
+-   [Deployment](#-deployment)
+-   [License](#-license)
+-   [Acknowledgements](#-acknowledgements)
 
 ------------------------------------------------------------------------
 
