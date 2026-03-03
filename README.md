@@ -1,99 +1,162 @@
 # Quizly
 
-> A lightweight, local quiz game powered by the [Open Trivia Database](https://opentdb.com). No accounts, no servers — just run it and play.
+> A containerized full-stack quiz game powered by the Open Trivia
+> Database (https://opentdb.com). Built with FastAPI, Nginx and Docker
+> --- ready to run in seconds.
 
----
+------------------------------------------------------------------------
 
 ## 📖 Table of Contents
 
-* [Overview](#overview)
-* [Features](#features)
-* [Installation & Start](#installation--start)
-* [Project Structure](#project-structure)
-* [Deployment](#deployment)
-* [License](#license)
-* [Acknowledgements](#acknowledgements)
+-   [Overview](#overview)
+-   [Features](#features)
+-   [Installation & Start](#installation--start)
+-   [Project Structure](#project-structure)
+-   [Deployment](#deployment)
+-   [License](#license)
+-   [Acknowledgements](#acknowledgements)
 
----
+------------------------------------------------------------------------
 
 ## 🧠 Overview
 
-**Quizly** is a simple, local Python quiz app that fetches trivia questions from OpenTriviaDB.
-It’s built to run completely offline after the first setup and requires **no external server or account**.
+**Quizly** is a containerized full-stack quiz application consisting of:
 
-The goal is to have a **self-contained, single-player quiz experience** that runs instantly with minimal setup.
+-   A FastAPI backend
+-   A static HTML/CSS/JavaScript frontend
+-   An Nginx reverse proxy
+-   A Docker Compose multi-container setup
 
----
+The application fetches trivia questions from OpenTriviaDB and provides
+a timed single-player quiz experience.
+
+This version demonstrates:
+
+-   Containerized backend services
+-   Reverse proxy configuration
+-   Multi-container orchestration
+-   API-driven frontend communication
+
+------------------------------------------------------------------------
 
 ## ✨ Features
 
-* 🔹 Single-player mode (no multiplayer planned)
-* 🔹 Fully automatic setup via `run.bat`
-* 🔹 Randomized questions from multiple categories and difficulty levels
-* 🔹 Score tracking and progress display
-* 🔹 Works entirely offline after first run
+-   🔹 Single-player quiz mode
+-   🔹 Timed questions with dynamic scoring
+-   🔹 Randomized answers
+-   🔹 Clean separation between frontend and backend
+-   🔹 Nginx reverse proxy (no CORS issues)
+-   🔹 Multi-container architecture via Docker Compose
+-   🔹 API-based communication between frontend and backend
 
----
+------------------------------------------------------------------------
 
 ## 🚀 Installation & Start
 
 ### Requirements
 
-* **Python 3.10+**
-* No manual `pip` or virtual environment setup needed — `run.bat` handles everything.
+-   Docker
+-   Docker Compose (included in modern Docker Desktop)
 
-### Quick Start (Recommended)
+No Python installation or manual dependency setup required.
 
-Simply double-click:
+------------------------------------------------------------------------
 
-```
-run.bat
-```
+### Quick Start
 
-The script will:
+From the project root directory:
 
-1. Check if Python is installed
-2. Create a virtual environment
-3. Install dependencies from `requirements.txt`
-4. Launch the game automatically
+docker compose build docker compose up
 
-After the first run, future starts are instant (no reinstall).
+Then open in your browser:
 
----
+http://localhost:8080
+
+Backend API documentation (Swagger UI):
+
+http://localhost:8000/docs
+
+------------------------------------------------------------------------
+
+### What Happens Internally
+
+Docker Compose will:
+
+1.  Build the FastAPI backend container
+2.  Build the Nginx frontend container
+3.  Create a shared Docker network
+4.  Start both services
+5.  Route `/api/*` requests internally from Nginx to FastAPI
+
+Everything runs in isolated containers.
+
+------------------------------------------------------------------------
 
 ## 🧩 Project Structure
 
-```
 Quizly/
-├─ app/             # Core game logic (questions, scoring, etc.)
-├─ modules/         # Reusable Python modules
-├─ requirements.txt # Dependency list
-├─ run.bat          # Windows launcher (auto-setup + run)
-├─ run.sh           # Optional Linux/macOS variant
-├─ .env.example     # Example environment configuration
+├─ docker-compose.yml        # Multi-container orchestration
+├─ requirements.txt          # Python dependencies
+│
+├─ backend/
+│  ├─ Dockerfile             # Backend container definition
+│  ├─ app/
+│  │   └─ quizly.py          # FastAPI application
+│  └─ modules/               # Question manager & logic
+│
+├─ web/
+│  ├─ Dockerfile             # Frontend container definition
+│  ├─ nginx.conf             # Reverse proxy configuration
+│  ├─ landing.html
+│  ├─ ingame.html
+│  ├─ landing.js
+│  ├─ ingame.js
+│  └─ quizly.css
+│
 └─ README.md
-```
 
----
+------------------------------------------------------------------------
 
 ## 🖥️ Deployment
 
-Since **Quizly** is fully local, there’s no deployment process.
+Since Quizly is containerized, it can be deployed anywhere Docker is
+available.
 
-### Option 1 – Local Use (Default)
+### Option 1 -- Local Development (Default)
 
-Just run `run.bat`.
-The script handles everything automatically.
+docker compose up
 
-### Option 2 – Portable Setup (Optional)
+Accessible via:
 
-To use on multiple computers:
+http://localhost:8080
 
-1. Copy the entire `Quizly/` folder
-2. Make sure Python is installed on the target system
-3. Run `run.bat` — setup and play instantly
+------------------------------------------------------------------------
 
----
+### Option 2 -- Server Deployment
+
+1.  Install Docker on your server (e.g., AWS EC2)
+2.  Clone the repository
+3.  Run:
+
+docker compose up -d
+
+The application will run in detached mode.
+
+------------------------------------------------------------------------
+
+### Architecture Summary
+
+Browser ↓ Nginx (Port 8080) ↓ Reverse Proxy (/api/\*) ↓ FastAPI Backend
+(Port 8000)
+
+This setup demonstrates:
+
+-   Reverse proxy routing
+-   Container networking
+-   Separation of concerns
+-   Clean infrastructure boundaries
+
+------------------------------------------------------------------------
 
 ## 📄 License
 
@@ -102,7 +165,7 @@ This project is licensed under the **MIT License**:
 ```
 MIT License
 
-Copyright (c) 2025 Leon Hosch, Victoria Meeßen, Zana Kryezi, Sven Richter, Mohamud
+Copyright (c) 2026 Leon Hosch, Victoria Meeßen, Zana Kryezi, Sven Richter, Mohamud
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -123,9 +186,13 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
 
 ## 💬 Acknowledgements
 
-* [OpenTriviaDB](https://opentdb.com) for providing the free question API
-* Everyone who tested and gave feedback
+-   OpenTriviaDB (https://opentdb.com) for providing the free question
+    API
+-   Docker & FastAPI communities
+-   Everyone who tested and provided feedback
 
----
+------------------------------------------------------------------------
 
-> 💡 **Tip:** Because it runs fully offline and installs itself, *Quizly* makes a great showcase for Python automation, local app setup, and API integration.
+> 💡 This version of Quizly is designed to showcase containerization,
+> reverse proxy configuration, and practical DevOps fundamentals in a
+> clean, minimal full-stack application.
