@@ -94,6 +94,7 @@ Everything runs in isolated containers.
 
 ## 🧩 Project Structure
 
+```
 Quizly/
 ├─ docker-compose.yml        # Multi-container orchestration
 ├─ requirements.txt          # Python dependencies
@@ -114,6 +115,7 @@ Quizly/
 │  └─ quizly.css
 │
 └─ README.md
+```
 
 ------------------------------------------------------------------------
 
